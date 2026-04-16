@@ -210,18 +210,112 @@
     <script>
         // 【核心黑科技：极速降维压缩词库】
         // 这样可以直接绕过代码输出上限，成功载入接近 700 个单词！
-           const rawTextData = [
-            //unit 1
-            “thanks to”,“由于,幸亏”,“be shocked at”,“对……感到震惊”,“suffer from”,“遭受,忍受”,“according to”,“根据”,“deal with”,“处理;应付”,“come across”,“偶遇,遇到”,“fall in love with”,“爱上,喜欢上”,“feel at home. 感觉自在”,“work out”,“解决,算出;实现”,“in case. 以防万一”,“pick up”,“拿起;捡起;学会;买,购买”,“belong to”,“属于”,“end up”,“(尤指经历一系列意外后)最终处于,到头来”,“catch up. 打听(不在时所发生的事情),别后叙谈”,“bring up”,“教育;养育;提出”,“try out”,“试用,试验”,
-            //unit 2
-            “admire the blossoms”,“赏花”,“in memory of”,“为了纪念”,“regardless of”,“不管,不顾”,“complain about”,“抱怨”,“be addressed to”,“被寄给……”,“a number of”,“许多”,“check out”,“查看”,“put up ““把……挂起来“a lantern fair”,“灯会“a red envelope”,“红包“a lantern riddles competition”,“猜灯谜比赛“rice balls”,“汤圆“extend an invitation”,“提出邀请”,“accept an invitation ““接受邀请”,“no less than”,“不少于,多达”,“be keen on”,“热衷,支持”,“have nothing to do with”,“与……无关”,“embrace the change”,“接受变化”,“look forward to”,“期待”,“book a table”,“订桌”,“toast each other ““互相敬酒”,“value one’s memory”,“重视某人的回忆”,
-            //unit 3
-            “go back to ancient China”,“追溯至古老的中国 ““play to one’s hearts’ content”,“尽情地玩耍”,“end with a surprising twist”,“以出乎意料的转折结束 ““break down walls”,“打破隔阂”,“a matter of life and death”,“一件生死攸关事 ““be shaped like a football”,“形状像足球”,“keep track of your fitness”,“记录健康情况 ““place one’s order”,“订购”,“develop your muscles”,“锻炼肌肉 ““be good for your heart”,“对心脏有好处”,“strengthen your lower back”,“加强你的腰部 ““burn calories”,“燃烧卡路里 ““improve your heart and lung function”,“提升你的心肺功能”,“hear from”,“收到某人来信 ““die out”,“灭绝 ““be born win asthma”,“天生患有哮喘”,“get in touch with your friends”,“与朋友取得联系 ““be terrified of skiing”,“害怕滑雪运动 ““my ultimate goal”,“我最终的目标”,
-            //unit 4
-            “be full of confidence”,“充满自信 ““get across”,“解释清楚,传达”,“transform...into...”,“把……变成……”,“on the edge of one’s seat”,“极为激动”,“tick all the right boxes”,“一切顺利,尽如人意”,“put on”,“表演(节目)”,“base...on”,“以……为基础 ”,“all too often”,“通常”,“result in”,“导致,造成”,“live up to”,“符合,不负(盛名)”,“to some extent”,“在某种程度上”,“with...in mind”,“把……放在心上”,“in one’s own right”,“凭借自身,靠自己”,“turn to”,“转向;求助于”
-            //unit 5
-            “be pleased with”,“对…感到满意”, “on one’s own”,“独自 ““set off”,“出发,动身”, “No way”,“不可能”,“agree with”,“同意(某人的看法)”,“at that time”,“那时”,“less than”,“少于”,“be determined to do sth.”,“决心做某事”,“make one’s dream come true”,“使某人的梦想变为现实”,“in particular”,“尤其,特别,格外”,“take every opportunity to do sth.”,“把握一切机会做某事”,“make an impact on”,“对…产生影响”,“when it comes to…”,“说到…在…方面”,“make a comment about/on”,“对…作出评论”,“be used to (doing)sth.”,“习惯于(做)某事”,“become/be familiar with”,“熟悉…”,“over time”,“随着时间的推移,渐渐地,慢慢地”,“make sb. aware of”,“使某人意识到…”,“quit one’s job as”,“辞去…工作”,“regard...as...”,“把……当作……”,“manage to do sth.”,“设法/最终做成了某事”,“can’t wait to do sth.”,“迫不及待地做某事”,“pick up”,“接载;捡起;拾起”,“fall asleep”,“入睡;睡着”,
-];
+          const rawTextData = [
+            // unit 1
+            "thanks to", "由于,幸亏", 
+            "be shocked at", "对……感到震惊", 
+            "suffer from", "遭受,忍受", 
+            "according to", "根据", 
+            "deal with", "处理;应付", 
+            "come across", "偶遇,遇到", 
+            "fall in love with", "爱上,喜欢上", 
+            "feel at home", "感觉自在", 
+            "work out", "解决,算出;实现", 
+            "in case", "以防万一", 
+            "pick up", "拿起;捡起;学会;买,购买", 
+            "belong to", "属于", 
+            "end up", "(尤指经历一系列意外后)最终处于,到头来", 
+            "catch up", "打听(不在时所发生的事情),别后叙谈", 
+            "bring up", "教育;养育;提出", 
+            "try out", "试用,试验",
+
+            // unit 2
+            "admire the blossoms", "赏花", 
+            "in memory of", "为了纪念", 
+            "regardless of", "不管,不顾", 
+            "complain about", "抱怨", 
+            "be addressed to", "被寄给……", 
+            "a number of", "许多", 
+            "check out", "查看", 
+            "put up", "把……挂起来", 
+            "a lantern fair", "灯会", 
+            "a red envelope", "红包", 
+            "a lantern riddles competition", "猜灯谜比赛", 
+            "rice balls", "汤圆", 
+            "extend an invitation", "提出邀请", 
+            "accept an invitation", "接受邀请", 
+            "no less than", "不少于,多达", 
+            "be keen on", "热衷,支持", 
+            "have nothing to do with", "与……无关", 
+            "embrace the change", "接受变化", 
+            "look forward to", "期待", 
+            "book a table", "订桌", 
+            "toast each other", "互相敬酒", 
+            "value one's memory", "重视某人的回忆",
+
+            // unit 3
+            "go back to ancient China", "追溯至古老的中国", 
+            "play to one's hearts' content", "尽情地玩耍", 
+            "end with a surprising twist", "以出乎意料的转折结束", 
+            "break down walls", "打破隔阂", 
+            "a matter of life and death", "一件生死攸关事", 
+            "be shaped like a football", "形状像足球", 
+            "keep track of your fitness", "记录健康情况", 
+            "place one's order", "订购", 
+            "develop your muscles", "锻炼肌肉", 
+            "be good for your heart", "对心脏有好处", 
+            "strengthen your lower back", "加强你的腰部", 
+            "burn calories", "燃烧卡路里", 
+            "improve your heart and lung function", "提升你的心肺功能", 
+            "hear from", "收到某人来信", 
+            "die out", "灭绝", 
+            "be born with asthma", "天生患有哮喘", 
+            "get in touch with your friends", "与朋友取得联系", 
+            "be terrified of skiing", "害怕滑雪运动", 
+            "my ultimate goal", "我最终的目标",
+
+            // unit 4
+            "be full of confidence", "充满自信", 
+            "get across", "解释清楚,传达", 
+            "transform...into...", "把……变成……", 
+            "on the edge of one's seat", "极为激动", 
+            "tick all the right boxes", "一切顺利,尽如人意", 
+            "put on", "表演(节目)", 
+            "base...on", "以……为基础", 
+            "all too often", "通常", 
+            "result in", "导致,造成", 
+            "live up to", "符合,不负(盛名)", 
+            "to some extent", "在某种程度上", 
+            "with...in mind", "把……放在心上", 
+            "in one's own right", "凭借自身,靠自己", 
+            "turn to", "转向;求助于",
+
+            // unit 5
+            "be pleased with", "对…感到满意", 
+            "on one's own", "独自", 
+            "set off", "出发,动身", 
+            "No way", "不可能", 
+            "agree with", "同意(某人的看法)", 
+            "at that time", "那时", 
+            "less than", "少于", 
+            "be determined to do sth.", "决心做某事", 
+            "make one's dream come true", "使某人的梦想变为现实", 
+            "in particular", "尤其,特别,格外", 
+            "take every opportunity to do sth.", "把握一切机会做某事", 
+            "make an impact on", "对…产生影响", 
+            "when it comes to…", "说到…在…方面", 
+            "make a comment about/on", "对…作出评论", 
+            "be used to (doing) sth.", "习惯于(做)某事", 
+            "become/be familiar with", "熟悉…", 
+            "over time", "随着时间的推移,渐渐地,慢慢地", 
+            "make sb. aware of", "使某人意识到…", 
+            "quit one's job as", "辞去…工作", 
+            "regard...as...", "把……当作……", 
+            "manage to do sth.", "设法/最终做成了某事", 
+            "can't wait to do sth.", "迫不及待地做某事", 
+            "pick up", "接载;捡起;拾起", 
+            "fall asleep", "入睡;睡着"
+        ];
 
         // 动态将一维数组切分为 20词 一轮的数据结构
         const roundsData = [];
