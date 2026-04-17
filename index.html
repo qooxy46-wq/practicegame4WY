@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUIRKY GO单词打卡练习</title>
+    <title>conquer English</title>
     <style>
         /* 基础样式复刻 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -111,28 +111,19 @@
 </head>
 <body>
 
-    <h1 class="main-title">QUIRKY GO单词打卡练习</h1>
+    <h1 class="main-title">conquer English</h1>
 
     <div class="tabs-container" id="main-menu">
-        <button class="tab-btn" onclick="showThemes()">12大主题词汇打卡</button>
-        <button class="tab-btn disabled">PU2打卡 (研发中)</button>
-        <button class="tab-btn" style="background-color: #f39c12;" onclick="showVip()">🌟 VIP 專屬打卡</button>
+        <button class="tab-btn disabled">单词（研发中）</button>
+        <button class="tab-btn" onclick="showThemes()">短语</button>
+        <button class="tab-btn disabled">句型（研发中）</button>
     </div>
 
     <div class="tabs-container" id="themes-menu">
         <button class="back-btn" onclick="showMainMenu()">← Back</button>
-        <a href="lesson1/index.html" class="tab-btn">Lesson 1: Body A</a>
-        <a href="lesson2/index.html" class="tab-btn">Lesson 2: Body B</a>
-        <a href="lesson3/index.html" class="tab-btn">Lesson 3: Color A</a>
-        <a href="lesson4/index.html" class="tab-btn">Lesson 4: Color B</a>
-        <a href="lesson5/index.html" class="tab-btn">Lesson 5: Family A</a>
+        <a href="collocations/index.html" class="tab-btn">短语匹配：chish</a>
     </div>
 
-    <div class="tabs-container" id="vip-menu" style="display: none; flex-direction: column; gap: 20px; width: 100%; animation: fadeIn 0.5s;">
-        <button class="back-btn" onclick="showMainMenu()">← Back</button>
-        <a href="vip-lesson/index.html" class="tab-btn" style="background-color: #f39c12;">VIP 挑战 for Alex</a>
-        <a href="vip-lesson1/index.html" class="tab-btn" style="background-color: #f39c12;">VIP 挑战 for GEORGE</a>
-    </div>
 
     <script>
         function showThemes() {
